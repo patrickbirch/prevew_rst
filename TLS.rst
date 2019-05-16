@@ -1,12 +1,12 @@
-TLS
-===
+Transport Layer Security (TLS)
+******************************
 
 Security is configured at multiple levels. Transport Layer Security
 (TLS) secures the API endpoints and is a
 cryptographic protocol. TLS provides secure communications over a computer
 network.
 
-The Percona Kubernetes Operator for PXC uses a cert-manager and supports manual configuration, which is available for all versions of K8s and is an upstream feature. A cert-manager is a Kubernetes tool widely used for to automate the management and issuance of TLS certifcates. 
+The Percona Kubernetes Operator for PXC uses a cert-manager and supports manual configuration, which is available for all versions of K8s and is an upstream feature. A cert-manager is a Kubernetes tool widely used for to automate the management and issuance of TLS certificates.
 
 
 Install the cert-manager
@@ -14,6 +14,7 @@ Install the cert-manager
 
 
 The cert-manager is community-driven, and open source. The steps to install the cert-manager are the following:
+
   * Create a namespace
   * Disable resource validations on the cert-manager namespace
   * Install the cert-manager.
@@ -22,22 +23,22 @@ The following commands perform the needed actions:
 
 ::
 
-  kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
-  kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/cert-manager.yaml
+    kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.7/deploy/manifests/cert-manager.yaml
 
 After the installation, you can verify the cert-manager by running the following command:
 
 ::
 
-  kubectl get pods <cert-manager namespace> 
-  
-The result displays the cert-manager and webhook active and running. 
+  kubectl get pods <cert-manager namespace>
+
+The result displays the cert-manager and webhook active and running.
 
 Run PXC with auto-generated certificates
 ========================================
 
 
-When you deploy the operator, the operator creates a self-signed issuer. The self-signed issuer is a Certificate Authority (CA) and generates certificates. The Percona Operator self-signed issuer is local to the operator namespace. This self-signed issuer is created because PXC requires all certrificates are issued by the same CA. 
+When you deploy the operator, the operator creates a self-signed issuer. The self-signed issuer is a Certificate Authority (CA) and generates certificates. The Percona Operator self-signed issuer is local to the operator namespace. This self-signed issuer is created because PXC requires all certrificates are issued by the same CA.
 
 The creation of the self-signed issuer allows you to deploy and use the Percona Operator without creating a clusterissuer separately.
 
@@ -45,16 +46,19 @@ The creation of the self-signed issuer allows you to deploy and use the Percona 
 Generate certificates manually
 ==============================
 
-You can generate certificates with the following steps:
+To generate certificates follow these steps:
+
   1. Provision a Certificate Authority (CA) to generate TLS certificates
   2. Generate a CA key and certificate file with the server details
   3. Create the server TLS certificates using the CA keys, certs, and server details
 
 
 The set of commands generate certificates with the following attributes:
+
   *  Server-pem - Certificate
   *  Server-key.pem - the private key
   *  ca.pem - Certificate Authority
+
 
 ::
 
@@ -112,9 +116,8 @@ You can use then use the YAML file to create the secret::
 
   kubectl create -f secret-ssl.yaml
 
-How to run PXC without TLS
+Run PXC without TLS
 ==========================
 
 
-We recommend that you run your cluster with the TLS protocol enabled. For demonstration purposes, you can disable the TLS protocol by edit `cr.yaml/spec/pxc/allowUnstafeConfigurations` to `true`. Be sure to reset the value when you have completed your tasks.
-
+We recommend that you run your cluster with the TLS protocol enabled. For demonstration purposes, disable the TLS protocol by editing the `cr.yaml/spec/pxc/allowUnstafeConfigurations` setting to `true`. Be sure to reset the value when you have completed your tasks.
