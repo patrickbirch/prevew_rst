@@ -30,7 +30,7 @@ configuration options for the Percona XtraDB Cluster.
 
 .. csv-table:: PXC Section
   :header: "Key", "Value", "Example", "Description"
-  :widths: 20, 15, 25, 30
+  :widths: 25, 8, 15, 25
   :delim: ,
 
   "size", "int", ``3``, The size of the Percona XtraDB cluster must be >= 3 for `High Availability <https://www.percona.com/doc/percona-xtradb-cluster/5.7/intro.html>`_
@@ -50,7 +50,7 @@ configuration options for the Percona XtraDB Cluster.
   nodeSelector, label, ``disktype: ssd``, `Kubernetes nodeSelector <https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector>`_
   affinity.topologyKey, string, ``kubernetes.io/hostname``, "The Operator topology key `constraints`_ node anti-affinity constraint"
   affinity.advanced, subdoc,  , "In cases where the pods require complex tuning the `advanced` option turns off the `topologykey` effect. This setting allows the standard Kubernetes affinity constraints of any complexity to be used."
-  affinity.tolerations, subdoc, ``"""node.alpha.kubernetes.io/unreachable"""``, `Kubernetes pod tolerations <https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/>`_
+  affinity.tolerations, subdoc, ``node.alpha.kubernetes.io/unreachable``, `Kubernetes pod tolerations <https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/>`_
   podDisruptionBudet.maxUnavailable, int, ``1``, The `Kubernetes podDisruptionBudget <https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget>`_ specifies the number of pods from the set unavailable after the eviction.
   podDisruptionBudet.minAvailable, int, ``0``, The `Kubernetes podDisruptionBudet <https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget>`_ defines the number of pods that must be available after an eviction.
   volumeSpec.emptyDir, string, ``{}``, The `Kubernetes emptyDir volume <https://kubernetes.io/docs/concepts/storage/volumes/#emptydir>`_ The directory created on a node and accessible to the PXC pod containers.
