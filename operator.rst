@@ -39,7 +39,7 @@ configuration options for the Percona XtraDB Cluster.
   readinessDelaySec, int, ``15``, Adds a delay before a run check to verify the application is ready to process traffic
   livenessDelaySec, int, ``300``, Adds a delay before the run check ensures the application is healthy and capable of processing requests
   forceUnsafeBootstrap, string, ``false``, The setting can be reset in case of a sudden crash when all nodes may be considered unsafe to bootstrap from. The setting lets a node be selected and set to `safe_to_bootstrap` and provides data recovery.
-  configuration, string, ``|   [mysqld]    wsrep_debug=ON  wsrep-provider_options=gcache.size=1G; gcache.recover=yes ``, The ``my.cnf`` file options to be passed to Percona XtraDB cluster nodes.
+  configuration, string, ``|``   ``[mysqld]``    ``wsrep_debug=ON`` ``wsrep-provider_options=gcache.size=1G; gcache.recover=yes ``, The ``my.cnf`` file options to be passed to Percona XtraDB cluster nodes.
   imagePullSecrets.name, string, ``private-registry-credentials``, The `Kubernetes ImagePullSecret <https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets>`_
   priorityClassName, string, ``high-priority``, The `Kubernetes Pod priority class <https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass>`_
   annotations, label, ``iam.amazonaws.com/role: role-arn``, The `Kubernetes annotations <https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/>`_
