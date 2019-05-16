@@ -10,6 +10,7 @@ main subsystems of the cluster:
 .. csv-table:: Custom Resource options
     :header: "Key"^ "Value Type"^ "Description"
     :widths: 15^ 15^ 40
+    :delim: ^
 
     "pxc"^ "subdoc"^ "Percona XtraDB Cluster general section"
     "proxysql"^ "subdoc"^ "ProxySQL section"
