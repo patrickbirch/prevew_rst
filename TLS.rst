@@ -49,7 +49,7 @@ You can generate certificates with the following steps:
   2. Generate a CA key and certificate file with the server details
   3. Create the server TLS certificates using the CA keys, certs, and server details
 
-The command generates certificate files with the following attributes:
+The set of commands generate certificates with the following attributes:
   *  Server-pem - Certificate
   *  Server-key.pem - the private key
   *  ca.pem - Certificate Authority
@@ -85,9 +85,9 @@ The command generates certificate files with the following attributes:
     from-file=tls.key=server-key.pem --from-file=ca.crt=ca.pem --
     type=kubernetes.io/tls
 
-  A disadvantage of generating certificates with the command line can make managing the infrastructure difficult to manage, document, and reproduce. You can use a YAML file to maintain your key and certificate data and save the file to a secure location.
+A disadvantage of generating certificates with the command line can make managing the infrastructure difficult to manage, document, and reproduce. You can use a YAML file to maintain your key and certificate data and save the file to a secure location.
 
-  The structure of the Secret-SSL.yaml file is::
+The structure of the Secret-SSL.yaml file is::
 
     apiVersion: v1
       kind: Secret
@@ -112,5 +112,5 @@ You can use then use the YAML file to create the secret::
 
 4. How to run PXC without TLS
 =============================
-We recommend that you run your cluster with the TLS protocol enabled. For demonstration purposes, you can disable the TLS protocol by edit cr.yaml/spec/pxc/allowUnstafeConfigurations to `true`. Be sure to reset the value when you have completed your tasks.
+We recommend that you run your cluster with the TLS protocol enabled. For demonstration purposes, you can disable the TLS protocol by edit `cr.yaml/spec/pxc/allowUnstafeConfigurations`to `true`. Be sure to reset the value when you have completed your tasks.
 
